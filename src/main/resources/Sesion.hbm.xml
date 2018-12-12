@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="Sesion" table="Sesion" catalog="kirillgod">
+
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+
+        <property name="HallID" type="int">
+            <column name="HallID"  not-null="true"  />
+        </property>
+
+        <property name="DataFilm" type="string" insert="false" update="false">
+            <column name="DataFilm" length="20"  not-null="true" unique="true" />
+        </property>
+
+        <property name="TimeFilm" type="int" insert="false" update="false">
+            <column name="TimeFilm"  not-null="true" unique="true" />
+        </property>
+
+        <property name="FilmID" type="int" insert="false" update="false">
+            <column name="FilmID"  not-null="true" unique="true" />
+        </property>
+
+        <property name="HallID" type="int" insert="false" update="false">
+            <column name="HallID" length="10" not-null="true" unique="true" />
+        </property>
+
+        <many-to-one name="Hall" class="Hall"
+                     column="HallID" not-null="true"
+        />
+        <many-to-one name="Film" class="Film"
+                     column="FilmID" not-null="true"
+        />
+
+
+    </class>
+
+</hibernate-mapping>

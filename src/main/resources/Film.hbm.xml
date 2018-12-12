@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="Film" table="Film" catalog="kirillgod">
+
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+
+        <property name="Title" type="string">
+            <column name="Title" length="20" not-null="true"  />
+        </property>
+
+        <property name="Duration" type="int" insert="false" update="false">
+            <column name="Duration" not-null="true" unique="true" />
+        </property>
+
+        <property name="StartHire" type="string" insert="false" update="false">
+            <column name="StartHire" length="20" not-null="true" unique="true" />
+        </property>
+
+        <property name="EndHire" type="string" insert="false" update="false">
+            <column name="EndHire" length="20" not-null="true" unique="true" />
+        </property>
+
+
+    </class>
+
+</hibernate-mapping>

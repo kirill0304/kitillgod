@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="Hall" table="Hall" catalog="kirillgod">
+
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+
+        <property name="Title" type="string">
+            <column name="Title" length="20" not-null="true"  />
+        </property>
+
+        <property name="NumberOfSeats" type="int" insert="false" update="false">
+            <column name="NumberOfSeats" not-null="true" unique="true" />
+        </property>
+
+        <property name="NumberOfRows" type="int" insert="false" update="false">
+            <column name="NumberOfRows"  not-null="true" unique="true" />
+        </property>
+
+        <many-to-one name="Hall" class="Hall"
+                     column="HallID" not-null="true"
+        />
+
+    </class>
+
+</hibernate-mapping>

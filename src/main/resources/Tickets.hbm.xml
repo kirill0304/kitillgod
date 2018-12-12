@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="Tickets" table="Tickets" catalog="kirillgod">
+
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+
+        <property name="ReleaseDate" type="string">
+            <column name="ReleaseDate" length="20" not-null="true"  />
+        </property>
+
+        <property name="SesionID" type="int" insert="false" update="false">
+            <column name="SesionID" not-null="true" unique="true" />
+        </property>
+
+        <property name="PlaceID" type="int" insert="false" update="false">
+            <column name="PlaceID"  not-null="true" unique="true" />
+        </property>
+
+        <property name="Booking" type="int" insert="false" update="false">
+            <column name="Booking"  not-null="true" unique="true" />
+        </property>
+
+
+        <property name="Price" type="int" insert="false" update="false">
+            <column name="Price"  not-null="true" unique="true" />
+        </property>
+
+        <property name="PlaceID" type="int" insert="false" update="false">
+            <column name="PlaceID"  not-null="true" unique="true" />
+        </property>
+
+
+        <many-to-one name="Sesion" class="Sesion"
+                     column="SesionID" not-null="true"
+        />
+
+        <many-to-one name="Place" class="Place"
+                     column="PlaceID" not-null="true"
+        />
+    </class>
+
+</hibernate-mapping>
