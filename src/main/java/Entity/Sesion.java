@@ -1,4 +1,7 @@
+package Entity;
 
+import Entity.Film;
+import Entity.Hall;
 
 public class Sesion {
     private Integer ID;

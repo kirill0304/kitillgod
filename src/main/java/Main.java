@@ -1,11 +1,17 @@
+
+import Entity.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import persistence.*;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args){
-        Session session = HibernateUtil.getSessionFactory().openSesion();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Film film1 = new Film();
                 film1.setID(1);
@@ -36,7 +42,7 @@ public class Main {
                 place1.setHall(hall1);
                 place1.setHallID(hall1.getID());
                 place1.setNumberOfRow(2);
-                place1.setNumberOfSeats(4);
+                place1.setNumberOfSeat(4);
 
 
 
@@ -61,4 +67,33 @@ public class Main {
 
     }
 
+    public static void test2() { //datab to JSON
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery("SELECT k FROM Film k");
+        List<Film> crs = query.list();
+        query = session.createQuery("SELECT k FROM Hall k");
+        List<Hall> carsp = query.list();
+        query = session.createQuery("SELECT k FROM Place k");
+        List<Place> carord = query.list();
+        query = session.createQuery("SELECT k FROM Sesion k");
+        List<Sesion> carcreat = query.list();
+        query = session.createQuery("SELECT k FROM Tickets k");
+        List<Tickets> deliver = query.list();
+
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File("target/carspecs.json"), carsp);
+            objectMapper.writeValue(new File("target/delivery.json"), deliver);
+            objectMapper.writeValue(new File("target/car_creators.json"), carcreat);
+            objectMapper.writeValue(new File("target/car_orders.json"), carord);
+            objectMapper.writeValue(new File("target/car.json"), crs);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
 }

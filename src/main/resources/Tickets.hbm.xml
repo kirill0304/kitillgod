@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
 
-    <class name="Tickets" table="Tickets" catalog="kirillgod">
+    <class name="Entity.Tickets" table="Tickets" catalog="kirillgod">
 
         <id name="ID" type="java.lang.Integer">
             <column name="ID" />
@@ -15,6 +15,17 @@
             <column name="ReleaseDate" length="20" not-null="true"  />
         </property>
 
+
+        <property name="Booking" type="int" >
+            <column name="Booking"  not-null="true" unique="true" />
+        </property>
+
+
+        <property name="Price" type="int" >
+            <column name="Price"  not-null="true" unique="true" />
+        </property>
+
+
         <property name="SesionID" type="int" insert="false" update="false">
             <column name="SesionID" not-null="true" unique="true" />
         </property>
@@ -23,25 +34,12 @@
             <column name="PlaceID"  not-null="true" unique="true" />
         </property>
 
-        <property name="Booking" type="int" insert="false" update="false">
-            <column name="Booking"  not-null="true" unique="true" />
-        </property>
 
-
-        <property name="Price" type="int" insert="false" update="false">
-            <column name="Price"  not-null="true" unique="true" />
-        </property>
-
-        <property name="PlaceID" type="int" insert="false" update="false">
-            <column name="PlaceID"  not-null="true" unique="true" />
-        </property>
-
-
-        <many-to-one name="Sesion" class="Sesion"
+        <many-to-one name="sesion" class="Entity.Sesion"
                      column="SesionID" not-null="true"
         />
 
-        <many-to-one name="Place" class="Place"
+        <many-to-one name="place" class="Entity.Place"
                      column="PlaceID" not-null="true"
         />
     </class>

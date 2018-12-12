@@ -1,3 +1,7 @@
+package Entity;
+
+import Entity.Hall;
+
 public class Place {
     private Integer ID;
     private Integer HallID;

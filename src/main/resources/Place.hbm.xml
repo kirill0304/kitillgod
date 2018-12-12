@@ -4,26 +4,28 @@
 
 <hibernate-mapping>
 
-    <class name="Place" table="Place" catalog="kirillgod">
+    <class name="Entity.Place" table="Place" catalog="kirillgod">
 
         <id name="ID" type="java.lang.Integer">
             <column name="ID" />
             <generator class="native" />
         </id>
 
-        <property name="HallID" type="int">
-            <column name="HallID"  not-null="true"  />
+        <property name="NumberOfSeat" type="int">
+            <column name="NumberOfSeat" length="20" not-null="true"  />
         </property>
 
-        <property name="NumberOfSeat" type="int" insert="false" update="false">
-            <column name="NumberOfSeat" not-null="true" unique="true" />
+        <property name="NumberOfRow" type="int">
+            <column name="NumberOfRow" length="20" not-null="true"  />
         </property>
 
-        <property name="NumberOfRow" type="int" insert="false" update="false">
-            <column name="NumberOfRow"  not-null="true" unique="true" />
+        <property name="HallID" type="int" insert="false" update="false">
+            <column name="HallID" length="10" not-null="true" unique="true" />
         </property>
 
-
+        <many-to-one name="hall" class="Entity.Hall"
+                     column="HallID" not-null="true"
+        />
     </class>
 
 </hibernate-mapping>

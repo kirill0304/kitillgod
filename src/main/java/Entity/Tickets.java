@@ -1,4 +1,7 @@
-import java.util.Date;
+package Entity;
+
+import Entity.Place;
+import Entity.Sesion;
 
 public class Tickets {
     private Integer ID;
@@ -7,7 +10,6 @@ public class Tickets {
     private Integer PlaceID;
     private Integer Booking;
     private Integer Price;
-    private Integer SellerID;
     private Place place;
     private Sesion sesion;
 
@@ -59,13 +61,6 @@ public class Tickets {
         Price = price;
     }
 
-    public Integer getSellerID() {
-        return SellerID;
-    }
-
-    public void setSellerID(Integer sellerID) {
-        SellerID = sellerID;
-    }
 
 
     public Place getPlace() {

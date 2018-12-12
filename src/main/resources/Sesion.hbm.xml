@@ -4,37 +4,35 @@
 
 <hibernate-mapping>
 
-    <class name="Sesion" table="Sesion" catalog="kirillgod">
+    <class name="Entity.Sesion" table="Sesion" catalog="kirillgod">
 
         <id name="ID" type="java.lang.Integer">
             <column name="ID" />
             <generator class="native" />
         </id>
 
-        <property name="HallID" type="int">
-            <column name="HallID"  not-null="true"  />
+
+        <property name="DataFilm" type="string" >
+            <column name="DataFilm" length="20"  not-null="true"/>
         </property>
 
-        <property name="DataFilm" type="string" insert="false" update="false">
-            <column name="DataFilm" length="20"  not-null="true" unique="true" />
+        <property name="TimeFilm" type="int" >
+            <column name="TimeFilm"  not-null="true" />
         </property>
 
-        <property name="TimeFilm" type="int" insert="false" update="false">
-            <column name="TimeFilm"  not-null="true" unique="true" />
-        </property>
-
-        <property name="FilmID" type="int" insert="false" update="false">
-            <column name="FilmID"  not-null="true" unique="true" />
-        </property>
 
         <property name="HallID" type="int" insert="false" update="false">
             <column name="HallID" length="10" not-null="true" unique="true" />
         </property>
 
-        <many-to-one name="Hall" class="Hall"
+        <property name="FilmID" type="int" insert="false" update="false">
+            <column name="FilmID" length="10" not-null="true" unique="true" />
+        </property>
+
+        <many-to-one name="hall" class="Entity.Hall"
                      column="HallID" not-null="true"
         />
-        <many-to-one name="Film" class="Film"
+        <many-to-one name="film" class="Entity.Film"
                      column="FilmID" not-null="true"
         />
 

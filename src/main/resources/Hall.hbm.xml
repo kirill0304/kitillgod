@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
 
-    <class name="Hall" table="Hall" catalog="kirillgod">
+    <class name="Entity.Hall" table="Hall" catalog="kirillgod">
 
         <id name="ID" type="java.lang.Integer">
             <column name="ID" />
@@ -15,17 +15,14 @@
             <column name="Title" length="20" not-null="true"  />
         </property>
 
-        <property name="NumberOfSeats" type="int" insert="false" update="false">
-            <column name="NumberOfSeats" not-null="true" unique="true" />
+        <property name="NumberOfSeats" type="int" >
+            <column name="NumberOfSeats" not-null="true" />
         </property>
 
-        <property name="NumberOfRows" type="int" insert="false" update="false">
-            <column name="NumberOfRows"  not-null="true" unique="true" />
+        <property name="NumberOfRows" type="int" >
+            <column name="NumberOfRows"  not-null="true"  />
         </property>
 
-        <many-to-one name="Hall" class="Hall"
-                     column="HallID" not-null="true"
-        />
 
     </class>
 

@@ -1,3 +1,5 @@
+package Entity;
+
 public class Hall {
     private Integer ID;
     private String title;

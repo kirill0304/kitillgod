@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
 
-    <class name="Film" table="Film" catalog="kirillgod">
+    <class name="Entity.Film" table="Film" catalog="kirillgod">
 
         <id name="ID" type="java.lang.Integer">
             <column name="ID" />
@@ -15,16 +15,16 @@
             <column name="Title" length="20" not-null="true"  />
         </property>
 
-        <property name="Duration" type="int" insert="false" update="false">
-            <column name="Duration" not-null="true" unique="true" />
+        <property name="Duration" type="int" >
+            <column name="Duration" not-null="true"  />
         </property>
 
-        <property name="StartHire" type="string" insert="false" update="false">
-            <column name="StartHire" length="20" not-null="true" unique="true" />
+        <property name="StartHire" type="string" >
+            <column name="StartHire" length="20" not-null="true"/>
         </property>
 
-        <property name="EndHire" type="string" insert="false" update="false">
-            <column name="EndHire" length="20" not-null="true" unique="true" />
+        <property name="EndHire" type="string" >
+            <column name="EndHire" length="20" not-null="true"  />
         </property>
 
 
