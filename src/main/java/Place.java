@@ -2,7 +2,7 @@ public class Place {
     private Integer ID;
     private Integer HallID;
     private Integer NumberOfRow;
-    private Integer NumberOfSeats;
+    private Integer NumberOfSeat;
     private Hall hall;
 
 
@@ -30,12 +30,12 @@ public class Place {
         NumberOfRow = numberOfRow;
     }
 
-    public Integer getNumberOfSeats() {
-        return NumberOfSeats;
+    public Integer getNumberOfSeat() {
+        return NumberOfSeat;
     }
 
-    public void setNumberOfSeats(Integer numberOfSeats) {
-        NumberOfSeats = numberOfSeats;
+    public void setNumberOfSeat(Integer numberOfSeat) {
+        NumberOfSeat = numberOfSeat;
     }
 
     public Hall getHall() {
