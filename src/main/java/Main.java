@@ -1,6 +1,7 @@
 
 import Entity.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import persistence.*;
@@ -56,6 +57,57 @@ public class Main {
                 tickets1.setBooking(0);
                 tickets1.setPrice(20);
 
+        Query query1= session.createQuery("SELECT a FROM Film a");
+        List<Film> film2 =query1.list();
+        System.out.println(film2);
+
+        Query query = session.createQuery("SELECT a FROM Film a");
+        List<Film> film = query.list();
+        query = session.createQuery("SELECT a FROM Hall a");
+        List<Hall> hall = query.list();
+        query = session.createQuery("SELECT a FROM Place a");
+        List<Place> place = query.list();
+        query = session.createQuery("SELECT a FROM Sesion a");
+        List<Sesion> sesion = query.list();
+        query = session.createQuery("SELECT a FROM Tickets a");
+        List<Tickets> tickets = query.list();
+
+
+        XmlMapper xmlMapper = new XmlMapper();
+        try {
+            xmlMapper.writeValue(new File("src/main/java/tests/Hall.xml"), hall);
+            xmlMapper.writeValue(new File("src/main/java/tests/Tickets.xml"), tickets);
+            xmlMapper.writeValue(new File("src/main/java/tests/Sesion.xml"), sesion);
+            xmlMapper.writeValue(new File("src/main/java/tests/Place.xml"), place);
+            xmlMapper.writeValue(new File("src/main/java/tests/Film.xml"), film);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Query queryy = session.createQuery("SELECT a FROM Film a");
+        List<Film> film0 = queryy.list();
+        queryy = session.createQuery("SELECT a FROM Hall a");
+        List<Hall> hall0 = queryy.list();
+        queryy = session.createQuery("SELECT a FROM Place a");
+        List<Place> place0 = queryy.list();
+        queryy = session.createQuery("SELECT a FROM Sesion a");
+        List<Sesion> sesion0 = queryy.list();
+        queryy = session.createQuery("SELECT a FROM Tickets a");
+        List<Tickets> tickets0 = queryy.list();
+
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File("src/main/java/tests/Hall.json"), hall0);
+            objectMapper.writeValue(new File("src/main/java/tests/Tickets.json"), tickets0);
+            objectMapper.writeValue(new File("src/main/java/tests/Sesion.json"), sesion0);
+            objectMapper.writeValue(new File("src/main/java/tests/Place.json"), place0);
+            objectMapper.writeValue(new File("src/main/java/tests/Film.json"), film0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
         session.save(film1);
         session.save(hall1);
@@ -67,33 +119,5 @@ public class Main {
 
     }
 
-    public static void test2() { //datab to JSON
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("SELECT k FROM Film k");
-        List<Film> crs = query.list();
-        query = session.createQuery("SELECT k FROM Hall k");
-        List<Hall> carsp = query.list();
-        query = session.createQuery("SELECT k FROM Place k");
-        List<Place> carord = query.list();
-        query = session.createQuery("SELECT k FROM Sesion k");
-        List<Sesion> carcreat = query.list();
-        query = session.createQuery("SELECT k FROM Tickets k");
-        List<Tickets> deliver = query.list();
-
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            objectMapper.writeValue(new File("target/carspecs.json"), carsp);
-            objectMapper.writeValue(new File("target/delivery.json"), deliver);
-            objectMapper.writeValue(new File("target/car_creators.json"), carcreat);
-            objectMapper.writeValue(new File("target/car_orders.json"), carord);
-            objectMapper.writeValue(new File("target/car.json"), crs);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-
-    }
 }

@@ -46,4 +46,9 @@ public class Film {
     public void setEndHire(String endHire) {
         EndHire = endHire;
     }
+
+    @Override
+        public String toString(){
+        return  "All_film: "+"\n"+title;
+    }
 }
